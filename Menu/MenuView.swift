@@ -34,15 +34,31 @@ struct MenuView: View {
                                  MenuItem(name: "Ikura Sushi", price: "5.99", imageName: "ikura-sushi")
                     ]
     
-    
-    
     var body: some View {
        
         List(menuItems) { item in
-            Text(item.name) 
+            
+            HStack{
+                Image(item.imageName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 50)
+                    .cornerRadius(10)
+                
+                Text(item.name)
+                    .bold()
+                
+                Spacer()
+                
+                Text("$" + item.price)
+            }
+            .listRowSeparator(.hidden)
+            .listRowBackground(
+                Color(.brown)
+                    .opacity(0.1))
         }
-        
-        
+        .listStyle(.plain)
+    
         
     }
 }
